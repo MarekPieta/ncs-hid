@@ -15,6 +15,19 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project("nRF Desktop"
         VERSION 0.1)
 
+if(CONFIG_BT_LL_SOFTDEVICE_PERIPHERAL)
+  message(WARNING "\n\n !!!!!!!!!!! CONFIG_BT_LL_SOFTDEVICE_PERIPHERAL\n\n")
+elseif(CONFIG_BT_LL_SOFTDEVICE_PERIPHERAL_HID)
+  message(WARNING "\n\n !!!!!!!!!!! CONFIG_BT_LL_SOFTDEVICE_PERIPHERAL_HID\n\n")
+elseif(CONFIG_BT_LL_SOFTDEVICE_CENTRAL)
+  message(WARNING "\n\n !!!!!!!!!!! CONFIG_BT_LL_SOFTDEVICE_CENTRAL\n\n")
+elseif(CONFIG_BT_LL_SOFTDEVICE_MULTIROLE)
+  message(WARNING "\n\n !!!!!!!!!!! CONFIG_BT_LL_SOFTDEVICE_MULTIROLE\n\n")
+else()
+  message(FATAL_ERROR "Unhandled SoftDevice LL variant. Configuration error")
+endif()
+
+
 ################################################################################
 
 assert(CONFIG_DESKTOP_HID_REPORT_DESC "HID report descriptor file must be specified")
