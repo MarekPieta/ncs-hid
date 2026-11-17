@@ -12,11 +12,11 @@ manifest:
       url-base: https://github.com/vegardgu
 
   projects:
-    # Use sdk-nrf that supports HID SoftDevice Controller variant
+    # Revert to sdk-nrf that does not support HID SoftDevice Controller variant
     - name: nrf
       remote: vegardgu
       repo-path: sdk-nrf
-      revision: 2a24afbc34ee55c3c237c58dfbb1305757972dc9
+      revision: 52c2b7fa266bc4408876b454b55ba709711d048f
       import: true
 
   self:
